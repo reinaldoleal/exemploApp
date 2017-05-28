@@ -1,0 +1,96 @@
+<div class="modal-header">
+  <h3 class="modal-title">CONTRACT</h3>
+</div>
+<div class="modal-body">
+  <div class="alert alert-warning" ng-show="isSubmited">
+      <label>Save changes?</label>
+      <button type="button" class="btn btn-primary" ng-click="save()">Yes</button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">No</button>
+  </div>
+  <div class="alert alert-warning" ng-show="isNoChange">
+      <label>No changes, save anyway?</label>
+      <button type="button" class="btn btn-primary" ng-click="save()">Yes</button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">No</button>
+  </div>
+  <form name="formContract" novalidate>
+    <div class="row">
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.codigo.$invalid}">
+        <label for="codigo">Código</label>
+        <input type="text" class="form-control" name="codigo" placeholder="Exemplo: 999/9999" ng-pattern="/^[0-9]{1,5}\/[0-9]{4}$/" ng-model="contract['Código']" required />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="dataAcordoComercial">Data acordo comercial</label>
+        <div class="input-group date">
+          <input type="text" class="form-control" name="dataAcordoComercial" id="dataAcordoComercial" ng-model="contract['Data acordo comercial']" readonly />
+          <span class="input-group-addon">
+					     <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.natureza.$invalid}">
+        <label for="natureza">Natureza</label>
+        <select class="form-control" name="natureza" ng-options="natureza.name as natureza.name for natureza in naturezaList" ng-model="contract['Natureza']" required></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.comprador.$invalid}">
+        <label for="comprador">Comprador</label>
+        <input type="text" class="form-control" name="comprador" ng-model="contract['Comprador']" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.vendedor.$invalid}">
+        <label for="vendedor">Vendedor</label>
+        <input type="text" class="form-control" name="vendedor" ng-model="contract['Vendedor']" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.energiaReferencia.$invalid}">
+        <label for="energiaReferencia">Energia referência</label>
+        <input type="text" class="form-control" name="energiaReferencia" ng-model="contract['Energia referência']" required />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.energiaEntregue.$invalid}">
+        <label for="energiaEntregue">Energia entregue</label>
+        <input type="text" class="form-control" name="energiaEntregue" ng-model="contract['Energia entregue']" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.statusAprovacao.$invalid}">
+        <label for="statusAprovacao">Status aprovação</label>
+        <select class="form-control" name="statusAprovacao" ng-options="status.name as status.name for status in statusList" ng-model="contract['Status aprovação']" required></select>
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.modelo.$invalid}">
+        <label for="modelo">Modelo</label>
+        <input type="text" class="form-control" name="modelo" ng-model="contract['Modelo']" required />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.precoBaseContratado.$invalid}">
+        <label for="precoBaseContratado">Preço base contratado</label>
+        <input type="text" class="form-control" name="precoBaseContratado" ng-model="contract['Preço base contratado']" ui-number-mask="2" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.submercado.$invalid}">
+        <label for="submercado">Submercado</label>
+        <input type="text" class="form-control" name="submercado" ng-model="contract['Submercado']" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.inicioFornecimento.$invalid}">
+        <label for="inicioFornecimento">Início fornecimento</label>
+        <input type="text" class="form-control" name="inicioFornecimento" placeholder="Mes/Ano. Ex.: Mai/2017" maxlength="8" ng-pattern="/^[A-Z]{1}[a-z]{2}\/[0-9]{4}$/" ng-model="contract['Início fornecimento']" required />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.fimFornecimento.$invalid}">
+        <label for="fimFornecimento">Fim fornecimento</label>
+        <input type="text" class="form-control" name="fimFornecimento" placeholder="Mes/Ano. Ex.: Mai/2017" maxlength="8" ng-pattern="/^[A-Z]{1}[a-z]{2}\/[0-9]{4}$/" ng-model="contract['Fim fornecimento']" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.inicioVigencia.$invalid}">
+        <label for="inicioVigencia">Início vigência</label>
+        <input type="text" class="form-control" name="inicioVigencia" placeholder="Mes/Ano. Ex.: Mai/2017" maxlength="8" ng-pattern="/^[A-Z]{1}[a-z]{2}\/[0-9]{4}$/" ng-model="contract['Início vigência']" required />
+      </div>
+      <div class="form-group col-md-4" ng-class="{'has-error': formContract.fimVigencia.$invalid}">
+        <label for="fimVigencia">Fim vigência</label>
+        <input type="text" class="form-control" name="fimVigencia" placeholder="Mes/Ano. Ex.: Mai/2017" maxlength="8" ng-pattern="/^[A-Z]{1}[a-z]{2}\/[0-9]{4}$/" ng-model="contract['Fim vigência']" required />
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="formContract.$invalid || isSubmited || isNoChange"> save </button>
+  <button type="button" class="btn btn-default" ng-click="close()"> close </button>
+</div>

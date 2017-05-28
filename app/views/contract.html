@@ -1,0 +1,11 @@
+<h3>{{name}}</h3>
+<div class="alert alert-success" ng-show="isSaved">
+	<strong>Success!</strong> Contract saved successfully.
+</div>
+<form class="form-inline">
+	<div class="form-group">
+		<label for="filter" class="control-label">Filter: </label>
+		<input type="text" name="filter" class="form-control" ng-model="filterValue" ng-change="filter();" />
+	</div>
+</form>
+<div class="grid" ui-grid="gridOptions" ui-grid-selection></div>
