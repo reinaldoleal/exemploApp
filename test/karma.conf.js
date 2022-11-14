@@ -30,7 +30,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-grid/ui-grid.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+      'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js',
       'bower_components/angular-input-masks/angular-input-masks-standalone.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
